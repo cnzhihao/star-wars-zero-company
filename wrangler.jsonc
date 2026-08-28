@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "game-wiki-starter",
+  "name": "star-wars-zero-company",
   "main": "@tanstack/react-start/server-entry",
   "compatibility_date": "2026-08-11",
   "compatibility_flags": ["nodejs_compat"],
