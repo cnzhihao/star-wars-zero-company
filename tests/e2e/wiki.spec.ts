@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Zero Company field manual', () => {
-  test('renders the player-first home in template mode', async ({ page }) => {
+  test('renders the player-first home in production mode', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('header nav')).toBeVisible();
@@ -9,11 +9,11 @@ test.describe('Zero Company field manual', () => {
     await expect(page.locator('a[href="/wiki"]')).toHaveCount(3);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       'content',
-      'noindex, nofollow'
+      'index, follow'
     );
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      new URL('/', page.url()).toString()
+      'https://starwars-zerocompany-wiki.wiki/'
     );
     await expect(page.locator('link[hreflang="zh-CN"]')).toHaveCount(0);
     await expect(page.locator('footer')).toBeVisible();
@@ -39,7 +39,7 @@ test.describe('Zero Company field manual', () => {
     await expect(page.getByRole('heading', { name: 'Sources' })).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       'content',
-      'noindex, nofollow'
+      'noindex, follow'
     );
   });
 
@@ -105,16 +105,22 @@ test.describe('Zero Company field manual', () => {
     );
   });
 
-  test('keeps template machine endpoints closed', async ({ request }) => {
+  test('publishes production machine endpoints', async ({ request }) => {
     const robots = await request.get('/robots.txt');
     expect(robots.ok()).toBe(true);
-    expect(await robots.text()).toContain('Disallow: /');
+    const robotsText = await robots.text();
+    expect(robotsText).toContain('Allow: /');
+    expect(robotsText).toContain(
+      'Sitemap: https://starwars-zerocompany-wiki.wiki/sitemap.xml'
+    );
 
     const sitemap = await request.get('/sitemap.xml');
     expect(sitemap.ok()).toBe(true);
     const sitemapXml = await sitemap.text();
     expect(sitemapXml).toContain('<urlset');
-    expect(sitemapXml).not.toContain('<loc>');
+    expect(sitemapXml).toContain(
+      '<loc>https://starwars-zerocompany-wiki.wiki/</loc>'
+    );
 
     const manifest = await request.get('/manifest.webmanifest');
     expect(manifest.ok()).toBe(true);

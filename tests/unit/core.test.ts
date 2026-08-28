@@ -11,13 +11,14 @@ import { homeHead, siteOrigin, wikiHead } from '@/lib/seo';
 import { cn } from '@/lib/utils';
 
 describe('Zero Company field manual contracts', () => {
-  it('starts in an isolated template-safe state', () => {
+  it('uses the production site identity', () => {
     expect(websiteConfig.name).toBe('Star Wars Zero Company Wiki');
     expect(websiteConfig.brandName).toBe('Zero Company Field Manual');
     expect(websiteConfig.repository).toBe(
       'https://github.com/cnzhihao/game-site-agents-template'
     );
-    expect(websiteConfig.isTemplate).toBe(true);
+    expect(websiteConfig.url).toBe('https://starwars-zerocompany-wiki.wiki');
+    expect(websiteConfig.isTemplate).toBe(false);
     expect(wikiEntries.every((entry) => !entry.indexable)).toBe(true);
     expect(wikiEntries.every((entry) => entry.sources.length > 0)).toBe(true);
   });
@@ -31,14 +32,16 @@ describe('Zero Company field manual contracts', () => {
   });
 
   it('builds local and configured absolute metadata safely', () => {
-    expect(siteOrigin('https://example.com/')).toBe('https://example.com');
+    expect(siteOrigin('https://example.com/')).toBe(
+      'https://starwars-zerocompany-wiki.wiki'
+    );
     expect(homeHead('en', 'https://example.com').meta).toContainEqual({
       name: 'robots',
-      content: 'noindex, nofollow',
+      content: 'index, follow',
     });
     expect(homeHead('en', 'https://example.com').links).toContainEqual({
       rel: 'canonical',
-      href: 'https://example.com/',
+      href: 'https://starwars-zerocompany-wiki.wiki/',
     });
 
     const entry = findWikiEntry('game-overview');
@@ -48,7 +51,7 @@ describe('Zero Company field manual contracts', () => {
       wikiHead(entry, category, 'https://example.com').links
     ).toContainEqual({
       rel: 'canonical',
-      href: 'https://example.com/wiki/briefing/game-overview',
+      href: 'https://starwars-zerocompany-wiki.wiki/wiki/briefing/game-overview',
     });
   });
 
