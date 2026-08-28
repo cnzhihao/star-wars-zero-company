@@ -56,7 +56,7 @@ export function WikiSearch({ compact = false }: { compact?: boolean }) {
           id="wiki-search"
           className="min-w-0 flex-1 bg-transparent px-1 py-3 font-bold outline-none placeholder:text-muted-foreground"
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search a material, system, guide or player question"
+          placeholder="Search an operator, location, mission or platform"
           type="search"
           value={query}
         />

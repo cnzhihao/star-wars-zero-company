@@ -1,7 +1,7 @@
 {
-  "site_title": "Game Wiki Starter | Player-first Wiki template",
-  "site_description": "A reusable player-first game Wiki starter built with React, TanStack Start, SEO-safe routes, and Cloudflare Workers.",
-  "social_image_alt": "Game Wiki Starter preview showing searchable categories and source-backed entry pages.",
+  "site_title": "Star Wars Zero Company Wiki | Zero Company Field Manual",
+  "site_description": "An unofficial, source-aware Star Wars Zero Company Wiki for operators, squad bonds, The Den, tactical missions and launch updates.",
+  "social_image_alt": "Zero Company Field Manual preview showing operator pages, campaign guides and source-aware launch notes.",
   "skip_to_content": "Skip to content",
   "nav_wiki": "Wiki",
   "nav_guides": "Guides",
@@ -17,10 +17,10 @@
   "language_english": "English",
   "language_chinese": "Simplified Chinese",
   "github_action": "View on GitHub",
-  "footer_tagline": "A reusable player-first Wiki starter for Cloudflare Workers.",
-  "footer_rights": "All rights reserved.",
-  "not_found_meta_title": "Page not found | Game Wiki Starter",
-  "not_found_title": "That page is not in this Wiki.",
-  "not_found_description": "The route does not exist in this template. Return to the Wiki index to find verified pages.",
+  "footer_tagline": "An unofficial, source-aware field manual for Star Wars Zero Company.",
+  "footer_rights": "Star Wars Zero Company and its marks belong to their respective owners. This site is not affiliated with EA or Lucasfilm.",
+  "not_found_meta_title": "Page not found | Zero Company Field Manual",
+  "not_found_title": "That page is not in this field manual.",
+  "not_found_description": "The route does not exist here. Return to the Wiki index to find verified Zero Company pages.",
   "not_found_action": "Open Wiki"
 }

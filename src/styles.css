@@ -1,63 +1,83 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Baloo 2 Variable";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400 800;
-  src: url("@fontsource-variable/baloo-2/files/baloo-2-latin-wght-normal.woff2")
-    format("woff2-variations");
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fff8e8;
-  --foreground: #171313;
-  --surface: #fffdf7;
-  --muted: #eee4d2;
-  --muted-foreground: #62594d;
-  --ink: #171313;
-  --paper: #fff8e8;
-  --orange: #ff6038;
-  --orange-strong: #e94c27;
-  --yellow: #ffd84a;
-  --yellow-soft: #ffe57d;
-  --cyan: #56d2ee;
-  --green: #a8dc73;
-  --lavender: #c4b7f2;
-  --positive: #176b35;
-  --focus: #2b79ff;
+  --background: #e8eff2;
+  --foreground: #0d1b26;
+  --surface: #f4f8f9;
+  --muted: #dbe7ec;
+  --muted-foreground: #526675;
+  --ink: #10202d;
+  --paper: #ffffff;
+  --orange: #0b7285;
+  --orange-strong: #075466;
+  --yellow: #0b7285;
+  --yellow-soft: #d6f5ed;
+  --cyan: #0b7285;
+  --green: #d8f1e9;
+  --lavender: #dce8f1;
+  --positive: #176b4d;
+  --focus: #075466;
+  --line: #9db5c1;
+  --line-subtle: rgb(157 181 193 / 0.45);
+  --line-soft: rgb(157 181 193 / 0.28);
+  --on-accent: #07121b;
+  --on-accent-muted: color-mix(in srgb, var(--on-accent) 75%, transparent);
+  --grid-line: rgb(11 114 133 / 0.08);
+  --grid-size: 48px;
+  --blueprint-cyan-fill: rgb(11 114 133 / 0.12);
+  --blueprint-cta-fill: rgb(11 114 133 / 0.1);
+  --blueprint-ring: rgb(11 114 133 / 0.08);
+  --elevation-xs: 0 2px 12px rgb(7 18 27 / 0.12);
+  --elevation-panel: 0 8px 24px rgb(7 18 27 / 0.18);
+  --elevation-lg: 0 16px 42px rgb(7 18 27 / 0.24);
+  --font-display-stack:
+    "Arial Narrow", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+  --font-body-stack:
+    "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono-stack: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius-control: 0.375rem;
+  --radius-panel: 0.5rem;
 }
 
 .dark {
-  --background: #181414;
-  --foreground: #fff8e8;
-  --surface: #242020;
-  --muted: #342d29;
-  --muted-foreground: #cec2ae;
-  --ink: #070606;
-  --paper: #fff8e8;
-  --orange: #ff7956;
-  --orange-strong: #f16543;
-  --yellow: #f7dc71;
-  --yellow-soft: #ffe795;
-  --cyan: #80d6e9;
-  --green: #b9dd87;
-  --lavender: #c9c0eb;
-  --positive: #75e69c;
-  --focus: #f7dc71;
+  --background: #070b12;
+  --foreground: #f4f7f5;
+  --surface: #111c2a;
+  --muted: #1d2a3a;
+  --muted-foreground: #92a2b3;
+  --ink: #07121b;
+  --paper: #0b111b;
+  --orange: #9eeada;
+  --orange-strong: #75e6f2;
+  --yellow: #9eeada;
+  --yellow-soft: #c6f7ec;
+  --cyan: #75e6f2;
+  --green: #d8f1e9;
+  --lavender: #dce8f1;
+  --positive: #8de1b8;
+  --focus: #75e6f2;
+  --line: #365166;
+  --line-subtle: rgb(54 81 102 / 0.72);
+  --line-soft: rgb(54 81 102 / 0.45);
+  --on-accent: #07121b;
+  --on-accent-muted: color-mix(in srgb, var(--on-accent) 75%, transparent);
+  --grid-line: rgb(117 230 242 / 0.07);
+  --grid-size: 48px;
+  --blueprint-cyan-fill: rgb(117 230 242 / 0.16);
+  --blueprint-cta-fill: rgb(158 234 218 / 0.12);
+  --blueprint-ring: rgb(117 230 242 / 0.08);
+  --elevation-xs: 0 2px 12px rgb(0 0 0 / 0.12);
+  --elevation-panel: 0 8px 24px rgb(0 0 0 / 0.18);
+  --elevation-lg: 0 16px 42px rgb(0 0 0 / 0.24);
 }
 
 @theme inline {
-  --font-sans:
-    "Baloo 2 Variable", "Arial Rounded MT Bold", "PingFang SC",
-    "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-sans: var(--font-body-stack);
+  --font-display: var(--font-display-stack);
+  --font-mono: var(--font-mono-stack);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
@@ -74,9 +94,9 @@
   --color-lavender: var(--lavender);
   --color-positive: var(--positive);
   --color-focus: var(--focus);
-  --shadow-brutal-xs: 2px 2px 0 0 var(--ink);
-  --shadow-brutal: 4px 4px 0 0 var(--ink);
-  --shadow-brutal-lg: 6px 6px 0 0 var(--ink);
+  --shadow-brutal-xs: var(--elevation-xs);
+  --shadow-brutal: var(--elevation-panel);
+  --shadow-brutal-lg: var(--elevation-lg);
 }
 
 @layer base {
@@ -93,14 +113,32 @@
     position: relative;
     margin: 0;
     overflow-x: clip;
-    background: var(--background);
+    background-color: var(--background);
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
     color: var(--foreground);
-    font-family:
-      "Baloo 2 Variable", "Arial Rounded MT Bold", "PingFang SC",
-      "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-body-stack);
     font-size: 16px;
     line-height: 1.5;
     text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display-stack);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  code,
+  kbd,
+  samp,
+  time {
+    font-family: var(--font-mono-stack);
   }
 
   button,
@@ -113,25 +151,116 @@
   }
 
   ::selection {
-    background: var(--yellow);
-    color: var(--ink);
+    background: var(--cyan);
+    color: var(--on-accent);
   }
+}
+
+/* Theme-level compatibility for the existing semantic utility classes. */
+[class~="border-2"] {
+  border-width: 1px;
+}
+
+[class~="border-y-2"] {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
+[class~="border-t-2"] {
+  border-top-width: 1px;
+}
+
+[class~="border-b-2"] {
+  border-bottom-width: 1px;
+}
+
+[class~="border-ink"] {
+  border-color: var(--line);
+}
+
+[class~="border-ink/15"] {
+  border-color: var(--line-soft);
+}
+
+[class~="border-ink/20"] {
+  border-color: var(--line-soft);
+}
+
+[class~="border-ink/30"],
+[class~="border-ink/40"] {
+  border-color: var(--line-subtle);
+}
+
+[class~="divide-ink/30"] > :not(:last-child) {
+  border-color: var(--line-subtle);
+}
+
+[class~="rounded-[10px]"],
+[class~="rounded-[12px]"],
+[class~="rounded-[14px]"] {
+  border-radius: var(--radius-panel);
+}
+
+[class~="rounded-lg"],
+[class~="rounded-md"] {
+  border-radius: var(--radius-control);
+}
+
+[class~="bg-cyan"],
+[class~="bg-green"],
+[class~="bg-lavender"],
+[class~="bg-orange"],
+[class~="bg-yellow"] {
+  color: var(--on-accent);
+}
+
+[class~="text-ink/75"] {
+  color: var(--on-accent-muted);
+}
+
+[class*="hover:-translate-"],
+[class*="active:translate-"] {
+  transform: none;
+}
+
+/* The landing hero stays dark even though its unchanged markup uses bg-yellow. */
+main > section[class~="bg-yellow"]:first-child {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  color: var(--foreground);
+}
+
+main > section[class~="bg-yellow"]:first-child [class~="text-ink/75"] {
+  color: var(--muted-foreground);
+}
+
+.dark [class~="dark:bg-paper"] {
+  background-color: var(--surface);
+}
+
+.dark [class~="dark:bg-paper"][class~="dark:text-ink"] {
+  background-color: var(--orange);
+  color: var(--on-accent);
 }
 
 @keyframes board-arrive {
   from {
     opacity: 0.65;
-    transform: translateY(18px) rotate(1.5deg);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) rotate(0);
+    transform: translateY(0);
   }
 }
 
 .hero-blueprint {
-  color: var(--foreground);
-  opacity: 0.18;
+  color: var(--cyan);
+  opacity: 0.2;
+  mix-blend-mode: screen;
 }
 
 .hero-blueprint-lines {
@@ -141,19 +270,22 @@
   height: 100%;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
-  stroke-dasharray: 9 11;
+  stroke-width: 1;
+  stroke-dasharray: 2 10;
   vector-effect: non-scaling-stroke;
 }
 
 .hero-blueprint-lines circle {
-  fill: var(--background);
+  fill: var(--surface);
   stroke-dasharray: none;
 }
 
 .hero-blueprint-piece {
   position: absolute;
-  border: 2px solid currentColor;
+  border: 1px solid currentColor;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--blueprint-ring);
+  rotate: 0deg;
 }
 
 .hero-blueprint-piece-cyan {
@@ -161,8 +293,11 @@
   right: -4rem;
   width: 18rem;
   height: 9rem;
-  rotate: 7deg;
-  background: var(--cyan);
+  background: linear-gradient(
+    135deg,
+    var(--blueprint-cyan-fill),
+    transparent 62%
+  );
 }
 
 .hero-blueprint-piece-orange {
@@ -170,8 +305,11 @@
   left: -3.5rem;
   width: 10rem;
   height: 10rem;
-  rotate: -8deg;
-  background: var(--orange);
+  background: linear-gradient(
+    135deg,
+    var(--blueprint-cta-fill),
+    transparent 64%
+  );
 }
 
 .hero-blueprint-piece-lavender {
@@ -179,35 +317,32 @@
   bottom: 4%;
   width: 7rem;
   height: 7rem;
-  border-radius: 999px;
-  background: var(--lavender);
+  border-radius: 50%;
+  background: transparent;
 }
 
 .hero-blueprint-bolt {
   position: absolute;
   width: 0.8rem;
   height: 0.8rem;
-  border: 2px solid currentColor;
-  background: var(--yellow);
-  box-shadow: 3px 3px 0 currentColor;
+  border: 1px solid currentColor;
+  background: var(--orange);
+  box-shadow: none;
 }
 
 .hero-blueprint-bolt-one {
   top: 27%;
   left: 5%;
-  rotate: 12deg;
 }
 
 .hero-blueprint-bolt-two {
   top: 22%;
   left: 48%;
-  rotate: -9deg;
 }
 
 .hero-blueprint-bolt-three {
   right: 4%;
   bottom: 22%;
-  rotate: 8deg;
 }
 
 .hero-board {
@@ -231,6 +366,12 @@
 
   .hero-blueprint-piece-lavender,
   .hero-blueprint-bolt-two {
+    display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  header [class~="min-[360px]:inline"] {
     display: none;
   }
 }

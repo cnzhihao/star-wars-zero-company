@@ -5,8 +5,8 @@ import { getRequestOrigin, wikiHead } from '@/lib/seo';
 
 export const Route = createFileRoute('/guides/map')({
   loader: () => {
-    const entry = findWikiEntry('starter-map');
-    const category = findWikiCategory('exploration');
+    const entry = findWikiEntry('the-den-and-galaxy-map');
+    const category = findWikiCategory('operations');
     if (!entry || !category) throw notFound();
     return { category, entry };
   },

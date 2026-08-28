@@ -10,24 +10,23 @@ import {
 import { homeHead, siteOrigin, wikiHead } from '@/lib/seo';
 import { cn } from '@/lib/utils';
 
-describe('Game Wiki starter contracts', () => {
+describe('Zero Company field manual contracts', () => {
   it('starts in an isolated template-safe state', () => {
-    expect(websiteConfig.name).toBe('Game Wiki Starter');
+    expect(websiteConfig.name).toBe('Star Wars Zero Company Wiki');
+    expect(websiteConfig.brandName).toBe('Zero Company Field Manual');
     expect(websiteConfig.repository).toBe(
       'https://github.com/cnzhihao/game-site-agents-template'
     );
     expect(websiteConfig.isTemplate).toBe(true);
     expect(wikiEntries.every((entry) => !entry.indexable)).toBe(true);
-    expect(
-      wikiEntries.every((entry) => entry.evidenceState === 'pending')
-    ).toBe(true);
+    expect(wikiEntries.every((entry) => entry.sources.length > 0)).toBe(true);
   });
 
   it('keeps content paths unique and supports custom Guide paths', () => {
     const paths = wikiEntries.map(getWikiEntryHref);
     expect(new Set(paths).size).toBe(paths.length);
-    const guide = findWikiEntry('starter-guide');
-    if (!guide) throw new Error('starter guide fixture is missing');
+    const guide = findWikiEntry('beginner-guide');
+    if (!guide) throw new Error('beginner guide fixture is missing');
     expect(getWikiEntryHref(guide)).toBe('/guides/beginner');
   });
 
@@ -42,14 +41,14 @@ describe('Game Wiki starter contracts', () => {
       href: 'https://example.com/',
     });
 
-    const entry = findWikiEntry('starter-resource');
-    const category = findWikiCategory('basics');
-    if (!entry || !category) throw new Error('starter fixture is missing');
+    const entry = findWikiEntry('game-overview');
+    const category = findWikiCategory('briefing');
+    if (!entry || !category) throw new Error('overview fixture is missing');
     expect(
       wikiHead(entry, category, 'https://example.com').links
     ).toContainEqual({
       rel: 'canonical',
-      href: 'https://example.com/wiki/basics/starter-resource',
+      href: 'https://example.com/wiki/briefing/game-overview',
     });
   });
 

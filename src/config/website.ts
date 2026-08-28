@@ -1,17 +1,18 @@
 export const websiteConfig = {
-  name: 'Game Wiki Starter',
+  name: 'Star Wars Zero Company Wiki',
+  brandName: 'Zero Company Field Manual',
   description:
-    'A player-first game Wiki starter built with TanStack Start and Cloudflare Workers.',
+    'An unofficial, source-aware Star Wars Zero Company Wiki for operators, squad bonds, The Den and tactical missions.',
   /** Set this to the production origin before a real site is launched. */
   url: null as string | null,
   repository: 'https://github.com/cnzhihao/game-site-agents-template',
-  /** Keep true until the placeholder content and site identity are replaced. */
+  /** Keep true until a production origin and launch audit are complete. */
   isTemplate: true,
-  defaultTheme: 'system' as const,
-  themeStorageKey: 'game-wiki-starter-theme',
+  defaultTheme: 'dark' as const,
+  themeStorageKey: 'zero-company-field-manual-theme',
   colors: {
-    background: '#fff8e8',
-    theme: '#ffd84a',
+    background: '#070b12',
+    theme: '#9eeada',
   },
   manifest: {
     id: '/',

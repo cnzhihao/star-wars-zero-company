@@ -9,14 +9,13 @@ export function Logo({ className }: { className?: string }) {
         className
       )}
     >
-      <svg
-        aria-hidden="true"
-        className="size-6"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
-        <path d="M14.5 2.5 6.5 13h5l-2 8.5 8-11h-5l2-8Z" fill="currentColor" />
-      </svg>
+      <img
+        alt=""
+        className="size-8 object-contain"
+        decoding="async"
+        draggable="false"
+        src="/assets/zero-company-wiki-logo.png"
+      />
     </span>
   );
 }

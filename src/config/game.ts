@@ -1,11 +1,22 @@
 export const gameConfig = {
-  /** Replace the demo identity before publishing a real game site. */
-  name: 'Example Game',
-  shortName: 'Example Game',
+  name: 'Star Wars Zero Company',
+  shortName: 'Zero Company',
   description:
-    'A placeholder game identity for the reusable Wiki starter. Replace this configuration with verified game information.',
-  status: 'Template content — replace before launch',
+    'A single-player, turn-based tactics game set in the twilight of the Clone Wars, with a customizable squad, off-battlefield planning and relationship-driven choices.',
+  status: 'Released 27 August 2026 · facts checked 28 August 2026',
   defaultLocale: 'en' as const,
-  /** Add verified destinations for the selected game before publishing. */
-  officialLinks: [] as readonly { label: string; href: string }[],
+  officialLinks: [
+    {
+      label: 'Official EA game page',
+      href: 'https://www.ea.com/games/starwars/zero-company',
+    },
+    {
+      label: 'StarWars.com overview',
+      href: 'https://www.starwars.com/games-apps/star-wars-zero-company',
+    },
+    {
+      label: 'Official gameplay trailer',
+      href: 'https://www.youtube.com/watch?v=WxLUZ1omFA8',
+    },
+  ] as const,
 } as const;

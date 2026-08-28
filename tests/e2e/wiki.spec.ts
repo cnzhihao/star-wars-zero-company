@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('game Wiki starter', () => {
+test.describe('Zero Company field manual', () => {
   test('renders the player-first home in template mode', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('header nav')).toBeVisible();
-    await expect(page.locator('main h1')).toHaveText(/Find the answer/);
+    await expect(page.locator('main h1')).toHaveText(/Command the next move/);
     await expect(page.locator('a[href="/wiki"]')).toHaveCount(3);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       'content',
@@ -23,20 +23,20 @@ test.describe('game Wiki starter', () => {
     await page.goto('/wiki');
     await expect(page.locator('main h1')).toHaveText('Wiki');
     await expect(page.locator('h2#categories-heading')).toBeVisible();
-    await expect(page.locator('a[href="/wiki/basics"]')).toBeVisible();
-    await page.locator('a[href="/wiki/basics"]').first().click();
-    await expect(page).toHaveURL(/\/wiki\/basics$/);
-    await expect(page.locator('main h1')).toHaveText('Basics');
-    await page.locator('a[href="/wiki/basics/starter-resource"]').click();
-    await expect(page).toHaveURL(/\/wiki\/basics\/starter-resource$/);
-    await expect(page.locator('main h1')).toHaveText('Example Resource');
+    await expect(page.locator('a[href="/wiki/briefing"]')).toBeVisible();
+    await page.locator('a[href="/wiki/briefing"]').first().click();
+    await expect(page).toHaveURL(/\/wiki\/briefing$/);
+    await expect(page.locator('main h1')).toHaveText('Briefing');
+    await page.locator('a[href="/wiki/briefing/game-overview"]').click();
+    await expect(page).toHaveURL(/\/wiki\/briefing\/game-overview$/);
+    await expect(page.locator('main h1')).toHaveText(
+      'Star Wars Zero Company: Game Overview'
+    );
     await expect(page.getByText('Short answer', { exact: true })).toBeVisible();
     await expect(
-      page.getByRole('heading', { name: 'What to verify' })
+      page.getByRole('heading', { name: 'What the game focuses on' })
     ).toBeVisible();
-    await expect(
-      page.locator('text=No verified source has been added yet')
-    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Sources' })).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       'content',
       'noindex, nofollow'
@@ -50,11 +50,49 @@ test.describe('game Wiki starter', () => {
     await expect(page.locator('main h1')).toHaveText('Guides');
     await page.locator('a[href="/guides/beginner"]').click();
     await expect(page).toHaveURL(/\/guides\/beginner$/);
-    await expect(page.locator('main h1')).toHaveText('Beginner Guide');
+    await expect(page.locator('main h1')).toHaveText(
+      'Star Wars Zero Company Beginner Guide'
+    );
 
-    const response = await page.goto('/wiki/basics/starter-guide');
+    const response = await page.goto('/wiki/briefing/beginner-guide');
     expect(response?.status()).toBe(200);
     await expect(page).toHaveURL(/\/guides\/beginner$/);
+  });
+
+  test('shows timestamped YouTube visual evidence on research guides', async ({
+    page,
+  }) => {
+    await page.goto('/guides/beginner');
+    const loadout = page.locator(
+      'img[src="/assets/zero-company-official-loadout-01-00.png"]'
+    );
+    await expect(loadout).toBeVisible();
+    await expect
+      .poll(() =>
+        loadout.evaluate((image) => (image as HTMLImageElement).naturalWidth)
+      )
+      .toBeGreaterThan(0);
+    await expect(
+      page.getByRole('link', {
+        name: 'Open EA Star Wars official gameplay trailer at 01:00 ↗',
+      })
+    ).toBeVisible();
+
+    await page.goto('/guides/map');
+    const map = page.locator(
+      'img[src="/assets/zero-company-community-galactic-map-34-54.png"]'
+    );
+    await expect(map).toBeVisible();
+    await expect
+      .poll(() =>
+        map.evaluate((image) => (image as HTMLImageElement).naturalWidth)
+      )
+      .toBeGreaterThan(0);
+    await expect(
+      page.getByRole('link', {
+        name: 'Open Dantics community guide at 34:54 ↗',
+      })
+    ).toBeVisible();
   });
 
   test('returns 404 for an unknown Wiki page', async ({ page }) => {
@@ -84,7 +122,7 @@ test.describe('game Wiki starter', () => {
       'application/manifest+json'
     );
     const manifestJson = await manifest.json();
-    expect(manifestJson.name).toBe('Game Wiki Starter');
+    expect(manifestJson.name).toBe('Star Wars Zero Company Wiki');
     expect(manifestJson.start_url).toBe('/');
   });
 

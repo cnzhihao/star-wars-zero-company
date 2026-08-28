@@ -1,7 +1,50 @@
 {
-  "version": 1,
-  "project": "Game Site Template",
-  "updated": "YYYY-MM-DD",
-  "policy": "Replace this manifest with traceable, permitted project assets before publishing.",
-  "assets": []
+  "version": 2,
+  "project": "Zero Company Field Manual",
+  "updated": "2026-08-28",
+  "policy": "These traceable YouTube keyframes are for the local noindex research build. Review rights and replace or remove them before public release.",
+  "assets": [
+    {
+      "path": "public/assets/zero-company-official-tactical-00-10.png",
+      "type": "image/png",
+      "width": 880,
+      "height": 495,
+      "sourcePage": "https://www.youtube.com/watch?v=WxLUZ1omFA8",
+      "sourceAsset": "https://www.youtube.com/watch?v=WxLUZ1omFA8&t=10s",
+      "timestamp": "00:10",
+      "sourcePhrase": "You want to fight?",
+      "plannedUse": "Tactical Combat Primer > Plan around the mission",
+      "credit": "EA Star Wars — Star Wars Zero Company | Official Gameplay Trailer",
+      "usageBoundary": "Visible tactical-scene reference only; it does not prove the complete combat rules. Rights review required before public release.",
+      "rightsStatus": "review-required"
+    },
+    {
+      "path": "public/assets/zero-company-official-loadout-01-00.png",
+      "type": "image/png",
+      "width": 880,
+      "height": 495,
+      "sourcePage": "https://www.youtube.com/watch?v=WxLUZ1omFA8",
+      "sourceAsset": "https://www.youtube.com/watch?v=WxLUZ1omFA8&t=60s",
+      "timestamp": "01:00",
+      "sourcePhrase": "Get down there.",
+      "plannedUse": "Beginner Guide > Prepare the squad around the task",
+      "credit": "EA Star Wars — Star Wars Zero Company | Official Gameplay Trailer",
+      "usageBoundary": "Visible armory and weapon-mod UI reference only; it does not prove a complete item database. Rights review required before public release.",
+      "rightsStatus": "review-required"
+    },
+    {
+      "path": "public/assets/zero-company-community-galactic-map-34-54.png",
+      "type": "image/png",
+      "width": 880,
+      "height": 495,
+      "sourcePage": "https://www.youtube.com/watch?v=bMIWs-xIh44",
+      "sourceAsset": "https://www.youtube.com/watch?v=bMIWs-xIh44&t=2094s",
+      "timestamp": "34:54",
+      "sourcePhrase": "Let's have a look at the galactic map.",
+      "plannedUse": "The Den & Galaxy Map Guide > Read the galaxy map as a decision point",
+      "credit": "Dantics — Star Wars Zero Company - The Ultimate Starting Guide",
+      "usageBoundary": "Community example only; it is not universal rules proof. Rights review required before public release.",
+      "rightsStatus": "review-required"
+    }
+  ]
 }

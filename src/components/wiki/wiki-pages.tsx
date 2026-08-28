@@ -9,7 +9,11 @@ import {
   wikiCategories,
   wikiEntries,
 } from '@/content/site';
-import type { WikiCategory, WikiEntry } from '@/content/types';
+import type {
+  WikiCategory,
+  WikiEntry,
+  WikiVisualEvidence,
+} from '@/content/types';
 import { WikiSearch } from './wiki-search';
 
 function TemplateNotice() {
@@ -17,18 +21,33 @@ function TemplateNotice() {
 
   return (
     <aside className="mt-8 rounded-[12px] border-2 border-ink bg-lavender p-5 text-ink shadow-brutal">
-      <strong className="block text-lg">Template mode</strong>
+      <strong className="block text-lg">Pre-launch workspace</strong>
       <p className="mt-1 max-w-[70ch] text-sm leading-6">
-        These pages are deliberately marked noindex and use placeholder content.
-        Replace the site identity, game configuration, sources and entries
-        before setting <code>websiteConfig.isTemplate</code> to false.
+        Real Zero Company pages are wired for local review. This clone remains
+        noindex until a production origin, final source pass and launch audit
+        are complete.
       </p>
     </aside>
   );
 }
 
 function pageTypeLabel(entry: WikiEntry) {
-  return entry.pageType === 'guide' ? 'Guide' : entry.pageType;
+  return {
+    access: 'Access',
+    entry: 'Entry',
+    guide: 'Guide',
+    update: 'Update',
+  }[entry.pageType];
+}
+
+function evidenceLabel(entry: WikiEntry) {
+  return entry.evidenceState === 'single-official-source'
+    ? 'Single official source'
+    : entry.evidenceState === 'community-lead'
+      ? 'Community lead'
+      : entry.evidenceState === 'pending'
+        ? 'Pending review'
+        : 'Verified';
 }
 
 function EntryCard({ entry }: { entry: WikiEntry }) {
@@ -53,6 +72,34 @@ function EntryCard({ entry }: { entry: WikiEntry }) {
   );
 }
 
+function VisualEvidenceFigure({ evidence }: { evidence: WikiVisualEvidence }) {
+  return (
+    <figure className="mt-6 overflow-hidden rounded-[12px] border-2 border-ink bg-ink shadow-brutal">
+      <img
+        alt={evidence.alt}
+        className="block w-full"
+        decoding="async"
+        loading="lazy"
+        src={evidence.src}
+      />
+      <figcaption className="bg-surface p-4 text-sm leading-6 text-muted-foreground">
+        <span className="block font-bold text-foreground">
+          {evidence.caption}
+        </span>
+        <a
+          className="mt-2 inline-block font-bold underline decoration-2 underline-offset-4"
+          href={evidence.sourceHref}
+          rel="noreferrer"
+          target="_blank"
+        >
+          Open {evidence.sourceLabel} at {evidence.timestamp} ↗
+        </a>
+        <span className="mt-1 block text-xs">{evidence.credit}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
 function CategoryCard({ category }: { category: WikiCategory }) {
   return (
     <a
@@ -67,7 +114,7 @@ function CategoryCard({ category }: { category: WikiCategory }) {
       </div>
       <p className="mt-2 leading-7 text-ink/75">{category.description}</p>
       <span className="mt-5 inline-block text-sm font-black">
-        {category.entrySlugs.length} starter pages
+        {category.entrySlugs.length} pages
       </span>
     </a>
   );
@@ -82,18 +129,18 @@ export function WikiHomePage() {
         <Container>
           <div className="max-w-4xl">
             <span className="inline-flex rounded-full border-2 border-ink bg-cyan px-4 py-1 text-sm font-black uppercase tracking-[0.12em] shadow-brutal-xs">
-              Player-first game Wiki starter
+              Clone Wars field manual
             </span>
             <h1 className="mt-7 text-balance text-[clamp(3rem,8vw,6.5rem)] font-black leading-[0.98] tracking-[-0.05em]">
-              Find the answer.
+              Command the next move.
               <span className="block text-orange-strong">
-                Build the next step.
+                Keep the squad ready.
               </span>
             </h1>
             <p className="mt-7 max-w-[68ch] text-lg leading-8 text-ink/75 sm:text-xl">
-              A reusable {gameConfig.name} Wiki shell for turning verified
-              search intent into browsable categories, useful guides and
-              source-backed entry pages.
+              {gameConfig.description} This field manual turns the clearest
+              player questions into browsable operator pages, campaign guides
+              and source-backed launch notes.
             </p>
             <div className="mt-9">
               <WikiSearch />
@@ -111,14 +158,14 @@ export function WikiHomePage() {
                 Start here
               </span>
               <h2 className="mt-2 text-4xl font-black tracking-[-0.03em] sm:text-5xl">
-                Browse the knowledge base
+                Pick a route into the operation
               </h2>
             </div>
             <a
               className="font-black underline decoration-2 underline-offset-4"
               href="/wiki"
             >
-              Open full Wiki →
+              Open the full manual →
             </a>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -133,15 +180,15 @@ export function WikiHomePage() {
         <Container>
           <div className="max-w-3xl">
             <span className="text-sm font-black uppercase tracking-[0.14em]">
-              Example content contract
+              Launch desk
             </span>
             <h2 className="mt-2 text-4xl font-black tracking-[-0.03em] sm:text-5xl">
-              One page, one player question, one useful next step.
+              One mission question, one reliable next step.
             </h2>
             <p className="mt-5 text-lg leading-8 text-ink/75">
-              Research first, keep evidence visible, then let the route render a
-              content entry. The starter refuses to treat a search result or a
-              placeholder as a verified game fact.
+              Start with the official brief, keep evidence visible, and use the
+              launch build to turn open questions into useful pages. Unverified
+              combat math stays marked for field testing.
             </p>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -160,29 +207,29 @@ export function WikiHomePage() {
                 Site recipe
               </span>
               <h2 className="mt-2 text-4xl font-black tracking-[-0.03em] sm:text-5xl">
-                Research → content → validation
+                Intel → action → verification
               </h2>
               <ol className="mt-8 grid gap-4">
                 {[
                   [
                     '01',
-                    'Research',
-                    'Map keywords to player intent and reliable sources.',
+                    'Brief',
+                    'Start from the official game and character material.',
                   ],
                   [
                     '02',
-                    'Model',
-                    'Store categories, entries, sources and relationships in the data layer.',
+                    'Prepare',
+                    'Choose the operator, mission and campaign question.',
                   ],
                   [
                     '03',
-                    'Build',
-                    'Render Wiki, Guide and access pages through reusable routes.',
+                    'Deploy',
+                    'Use the Wiki and Guide routes to find the next action.',
                   ],
                   [
                     '04',
                     'Verify',
-                    'Run content, metadata, route, mobile and build checks before launch.',
+                    'Tie live observations to a build version before publishing.',
                   ],
                 ].map(([number, title, description]) => (
                   <li
@@ -205,8 +252,8 @@ export function WikiHomePage() {
             <aside className="rounded-[12px] border-2 border-ink bg-lavender p-6 text-ink shadow-brutal lg:self-start">
               <h2 className="text-2xl font-black">Official sources</h2>
               <p className="mt-3 leading-7 text-ink/75">
-                Replace the links in <code>src/config/game.ts</code> with
-                verified destinations before publishing.
+                These are the source-of-truth starting points for the field
+                manual. Dynamic facts include a review date on their page.
               </p>
               <div className="mt-5 grid gap-2">
                 {gameConfig.officialLinks.map((link) => (
@@ -214,6 +261,8 @@ export function WikiHomePage() {
                     className="font-black underline decoration-2 underline-offset-4"
                     href={link.href}
                     key={link.href}
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     {link.label} ↗
                   </a>
@@ -268,7 +317,7 @@ export function WikiIndexPage() {
         <section className="mt-16" aria-labelledby="entries-heading">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-3xl font-black" id="entries-heading">
-              Starter pages
+              Field manual pages
             </h2>
             <span className="text-sm font-bold text-muted-foreground">
               {entries.length} pages
@@ -331,8 +380,8 @@ export function WikiCategoryPage({ category }: { category: WikiCategory }) {
             </div>
           ) : (
             <p className="mt-6 rounded-[12px] border-2 border-dashed border-ink/40 p-6 text-muted-foreground">
-              No verified entries yet. Use this category as a research target,
-              not as a reason to publish placeholder pages.
+              No verified entries yet. Keep this category as a research target
+              until a useful source-backed page is ready.
             </p>
           )}
         </section>
@@ -379,7 +428,7 @@ export function WikiEntryPage({
         <article className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
           <div>
             <span className="text-sm font-black uppercase tracking-[0.14em] text-orange-strong">
-              {pageTypeLabel(entry)} · {entry.evidenceState}
+              {pageTypeLabel(entry)} · {evidenceLabel(entry)}
             </span>
             <h1 className="mt-3 text-5xl font-black leading-[1.02] tracking-[-0.04em] sm:text-6xl">
               {entry.title}
@@ -431,6 +480,9 @@ export function WikiEntryPage({
                       ))}
                     </ul>
                   )}
+                  {section.visualEvidence && (
+                    <VisualEvidenceFigure evidence={section.visualEvidence} />
+                  )}
                 </section>
               ))}
             </div>
@@ -439,11 +491,12 @@ export function WikiEntryPage({
           <aside className="grid content-start gap-5">
             <div className="rounded-[12px] border-2 border-ink bg-lavender p-5 text-ink shadow-brutal">
               <span className="text-sm font-black uppercase tracking-[0.12em]">
-                Page contract
+                Evidence note
               </span>
               <p className="mt-3 leading-7 text-ink/75">
-                This entry should answer one search intent, show its evidence
-                state and link to the next useful page.
+                This page answers one player intent. Confirmed facts are linked
+                to official sources; open mechanics stay visible as research
+                tasks.
               </p>
             </div>
             <div className="rounded-[12px] border-2 border-ink bg-surface p-5 shadow-brutal">
@@ -455,6 +508,8 @@ export function WikiEntryPage({
                       className="font-bold underline decoration-2 underline-offset-4"
                       href={source.href}
                       key={source.href}
+                      rel="noreferrer"
+                      target="_blank"
                     >
                       {source.label} ↗
                       {source.note && (

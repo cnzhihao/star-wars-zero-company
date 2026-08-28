@@ -86,6 +86,7 @@ export function homeHead(locale: AppLocale, requestOrigin?: string) {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           name: websiteConfig.name,
+          alternateName: websiteConfig.brandName,
           url: pageUrl,
           description,
           inLanguage: localeMeta[locale].hreflang,

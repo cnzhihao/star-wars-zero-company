@@ -1,7 +1,188 @@
 {
-  "project": "Replace with the site project name",
-  "game": "Replace with the verified game name",
-  "collectedAt": "YYYY-MM-DD",
-  "notes": "Use this file as a planning input. Keep raw query sources and exclusions in keyword-materials.md.",
-  "keywords": []
+  "project": "Zero Company Field Manual",
+  "game": "Star Wars Zero Company",
+  "collectedAt": "2026-08-28",
+  "notes": "Launch-build research package. All pages remain noindex while the clone has no production origin. Google links are discovery evidence; official pages are the fact sources.",
+  "keywords": [
+    {
+      "keyword": "star wars zero company wiki",
+      "intent": "Find a reliable overview of the game and its major systems.",
+      "cluster": "entry",
+      "pageType": "entry",
+      "route": "/wiki/briefing/game-overview",
+      "slug": "game-overview",
+      "priority": "P0",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.ea.com/games/starwars/zero-company",
+        "https://www.starwars.com/games-apps/star-wars-zero-company"
+      ],
+      "relatedSlugs": [
+        "beginner-guide",
+        "operators-and-bonds",
+        "release-platforms"
+      ]
+    },
+    {
+      "keyword": "star wars zero company beginner guide",
+      "intent": "Understand the first campaign and squad-planning loop.",
+      "cluster": "entry",
+      "pageType": "guide",
+      "route": "/guides/beginner",
+      "slug": "beginner-guide",
+      "priority": "P0",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.starwars.com/games-apps/star-wars-zero-company",
+        "https://www.starwars.com/news/star-wars-zero-company"
+      ],
+      "relatedSlugs": [
+        "game-overview",
+        "operators-and-bonds",
+        "the-den-and-galaxy-map",
+        "tactical-combat"
+      ]
+    },
+    {
+      "keyword": "star wars zero company operators",
+      "intent": "Learn how operatives, customization and squad bonds fit together.",
+      "cluster": "knowledge",
+      "pageType": "entry",
+      "route": "/wiki/operators/operators-and-bonds",
+      "slug": "operators-and-bonds",
+      "priority": "P0",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.ea.com/games/starwars/zero-company",
+        "https://www.starwars.com/games-apps/star-wars-zero-company",
+        "https://www.starwars.com/news/star-wars-zero-company"
+      ],
+      "relatedSlugs": [
+        "hawks",
+        "named-operatives",
+        "beginner-guide",
+        "tactical-combat"
+      ]
+    },
+    {
+      "keyword": "zero company release date",
+      "intent": "Check the current release status and official platform destinations.",
+      "cluster": "access",
+      "pageType": "access",
+      "route": "/wiki/intel/release-platforms",
+      "slug": "release-platforms",
+      "priority": "P0",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.ea.com/games/starwars/zero-company",
+        "https://www.starwars.com/games-apps/star-wars-zero-company"
+      ],
+      "relatedSlugs": ["game-overview", "launch-updates", "beginner-guide"]
+    },
+    {
+      "keyword": "zero company galaxy map",
+      "intent": "Understand The Den and how map choices lead into missions.",
+      "cluster": "mechanics",
+      "pageType": "guide",
+      "route": "/guides/map",
+      "slug": "the-den-and-galaxy-map",
+      "priority": "P1",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.starwars.com/news/star-wars-zero-company",
+        "https://www.starwars.com/games-apps/star-wars-zero-company"
+      ],
+      "relatedSlugs": ["beginner-guide", "tactical-combat", "game-overview"]
+    },
+    {
+      "keyword": "zero company turn based combat",
+      "intent": "Get a cautious combat primer without invented numeric rules.",
+      "cluster": "mechanics",
+      "pageType": "entry",
+      "route": "/wiki/operations/tactical-combat",
+      "slug": "tactical-combat",
+      "priority": "P1",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.ea.com/games/starwars/zero-company",
+        "https://www.starwars.com/games-apps/star-wars-zero-company"
+      ],
+      "relatedSlugs": [
+        "operators-and-bonds",
+        "beginner-guide",
+        "the-den-and-galaxy-map"
+      ]
+    },
+    {
+      "keyword": "star wars zero company hawks",
+      "intent": "Find the protagonist’s role and confirmed customization options.",
+      "cluster": "knowledge",
+      "pageType": "entry",
+      "route": "/wiki/operators/hawks",
+      "slug": "hawks",
+      "priority": "P1",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.starwars.com/games-apps/star-wars-zero-company",
+        "https://www.ea.com/games/starwars/zero-company"
+      ],
+      "relatedSlugs": [
+        "operators-and-bonds",
+        "game-overview",
+        "named-operatives"
+      ]
+    },
+    {
+      "keyword": "star wars zero company characters",
+      "intent": "Reference confirmed character names before deeper combat research.",
+      "cluster": "knowledge",
+      "pageType": "entry",
+      "route": "/wiki/operators/named-operatives",
+      "slug": "named-operatives",
+      "priority": "P1",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.starwars.com/news/star-wars-zero-company",
+        "https://www.starwars.com/games-apps/star-wars-zero-company"
+      ],
+      "relatedSlugs": ["operators-and-bonds", "hawks", "beginner-guide"]
+    },
+    {
+      "keyword": "infinite coil zero company",
+      "intent": "Identify the official threat and separate known facts from pending enemy mechanics.",
+      "cluster": "knowledge",
+      "pageType": "entry",
+      "route": "/wiki/intel/infinite-coil",
+      "slug": "infinite-coil",
+      "priority": "P1",
+      "evidence": "verified",
+      "indexable": false,
+      "sources": [
+        "https://www.ea.com/games/starwars/zero-company",
+        "https://www.starwars.com/games-apps/star-wars-zero-company"
+      ],
+      "relatedSlugs": ["tactical-combat", "game-overview", "release-platforms"]
+    },
+    {
+      "keyword": "zero company patch notes",
+      "intent": "Find launch-era official updates while keeping version-sensitive claims dated.",
+      "cluster": "updates",
+      "pageType": "update",
+      "route": "/wiki/intel/launch-updates",
+      "slug": "launch-updates",
+      "priority": "P2",
+      "evidence": "single-official-source",
+      "indexable": false,
+      "sources": ["https://www.ea.com/games/starwars/zero-company"],
+      "relatedSlugs": ["release-platforms", "game-overview", "infinite-coil"]
+    }
+  ]
 }

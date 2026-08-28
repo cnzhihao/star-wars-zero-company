@@ -20,6 +20,17 @@ export type WikiSection = {
   heading: string;
   paragraphs: readonly string[];
   bullets?: readonly string[];
+  visualEvidence?: WikiVisualEvidence;
+};
+
+export type WikiVisualEvidence = {
+  src: string;
+  alt: string;
+  caption: string;
+  sourceHref: string;
+  sourceLabel: string;
+  timestamp: string;
+  credit: string;
 };
 
 export type WikiEntry = {
