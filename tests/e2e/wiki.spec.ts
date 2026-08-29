@@ -39,7 +39,7 @@ test.describe('Zero Company field manual', () => {
     await expect(page.getByRole('heading', { name: 'Sources' })).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       'content',
-      'noindex, follow'
+      'index, follow'
     );
   });
 

@@ -120,7 +120,7 @@ export const wikiEntries: readonly WikiEntry[] = [
       'zero company game',
       'zero company gameplay',
     ],
-    indexable: false,
+    indexable: true,
     facts: [
       { label: 'Format', value: 'Single-player, turn-based tactics' },
       { label: 'Setting', value: 'The twilight of the Clone Wars' },
@@ -179,7 +179,7 @@ export const wikiEntries: readonly WikiEntry[] = [
       'zero company how to play',
       'star wars zero company tips',
     ],
-    indexable: false,
+    indexable: true,
     facts: [
       {
         label: 'Campaign format',
@@ -254,7 +254,7 @@ export const wikiEntries: readonly WikiEntry[] = [
       'zero company bonds',
       'zero company best squad',
     ],
-    indexable: false,
+    indexable: true,
     facts: [
       { label: 'Recruitment', value: 'Authored and custom characters' },
       { label: 'Customization', value: 'Appearance, loadout and abilities' },
@@ -429,7 +429,7 @@ export const wikiEntries: readonly WikiEntry[] = [
       'zero company abilities',
       'zero company tactics',
     ],
-    indexable: false,
+    indexable: true,
     facts: [
       { label: 'Combat format', value: 'Turn-based tactical battles' },
       { label: 'Core tool', value: 'A varied arsenal of tactical abilities' },
@@ -493,7 +493,7 @@ export const wikiEntries: readonly WikiEntry[] = [
       'zero company map guide',
       'zero company ring of kafrene',
     ],
-    indexable: false,
+    indexable: true,
     facts: [
       { label: 'Base', value: 'The Den' },
       { label: 'Location', value: 'The Ring of Kafrene' },

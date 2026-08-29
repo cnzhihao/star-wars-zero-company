@@ -19,7 +19,15 @@ describe('Zero Company field manual contracts', () => {
     );
     expect(websiteConfig.url).toBe('https://starwars-zerocompany-wiki.wiki');
     expect(websiteConfig.isTemplate).toBe(false);
-    expect(wikiEntries.every((entry) => !entry.indexable)).toBe(true);
+    expect(
+      wikiEntries.filter((entry) => entry.indexable).map((entry) => entry.slug)
+    ).toEqual([
+      'game-overview',
+      'beginner-guide',
+      'operators-and-bonds',
+      'tactical-combat',
+      'the-den-and-galaxy-map',
+    ]);
     expect(wikiEntries.every((entry) => entry.sources.length > 0)).toBe(true);
   });
 
